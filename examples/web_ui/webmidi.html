@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WebMidi.js Quick Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
+    <script type="module">
+        const MIDI_MSG_LED_TOGGLE = 0
+        const MIDI_MSG_LED_BRIGHTNESS = 1
+
+        WebMidi
+            .enable()
+            .then(onEnabled)
+            .catch(err => alert(err));
+
+        function onEnabled() {
+            let circuitPyInput = WebMidi.inputs.find((device) => device.name.includes("CircuitPython"));
+            let circuitPyOutput = WebMidi.outputs.find((device) => device.name.includes("CircuitPython"));
+            if (circuitPyInput == undefined || circuitPyOutput == undefined) {
+                document.getElementById("header").innerHTML = "No device detected.";
+                return;
+            }
+
+            document.getElementById("header").innerHTML = "CircuitPython Control";
+            let sliderDiv = document.createElement('div');
+            let slider = document.createElement('input');
+            slider.type = 'range';
+            slider.min = '0';
+            slider.max = '127';
+            slider.value = '50';
+            slider.className = 'slider';
+            slider.addEventListener('input', (event) => {
+                circuitPyOutput.channels[1].sendControlChange(MIDI_MSG_LED_BRIGHTNESS, event.target.value)
+            });
+            sliderDiv.appendChild(slider);
+            document.body.appendChild(sliderDiv);
+
+            let toggleDiv = document.createElement('div');
+            let label = document.createElement('label');
+            label.className = 'toggle-switch';
+            label.textContent = "LED status";
+            let input = document.createElement('input');
+            input.type = 'checkbox';
+            input.addEventListener('change', (event) => {
+                let value = event.target.checked ? 127 : 0;
+                circuitPyOutput.channels[1].sendControlChange(MIDI_MSG_LED_TOGGLE, value);
+            });
+            let span = document.createElement('span');
+            span.className = 'slider';
+            label.appendChild(input);
+            label.appendChild(span);
+            toggleDiv.appendChild(label);
+            document.body.appendChild(toggleDiv);
+
+
+            circuitPyInput.channels[1].addListener("controlchange", event => {
+                if (event.controller.number == MIDI_MSG_LED_BRIGHTNESS) {
+                    slider.value = event.rawValue;
+                } else if (event.controller.number == MIDI_MSG_LED_TOGGLE) {
+                    input.checked = event.rawValue > 0;
+                }
+
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1 id="header">Trying to connect to CircuitPython device...</h1>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+.metadata_never_index
+.Trash*
+**/._*
+.fseventsd/
+boot_out.txt
+settings.toml
+sd/
