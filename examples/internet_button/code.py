@@ -10,8 +10,7 @@ import ssl
 
 print("Running internet button example") 
 
-ID = "Internet Button"
-ENDPOINT = f"https://dupontgu-ambermollusk.web.val.run/?id={ID}"
+
 
 button = digitalio.DigitalInOut(board.BUTTON)
 button.direction = digitalio.Direction.INPUT
@@ -22,9 +21,11 @@ led.direction = digitalio.Direction.OUTPUT
 
 credentials_csv = CsvReader("examples/internet_button/credentials.csv")
 # expecting credentials to be in the first row after the headers
-wifi_creds = credentials_csv[0]
-ssid = wifi_creds['WiFi SSID']
-pwd = wifi_creds['WiFi Password']
+credentials = credentials_csv[0]
+ssid = credentials['WiFi SSID']
+pwd = credentials['WiFi Password']
+button_id = credentials['Button ID']
+ENDPOINT = f"https://dupontgu-ambermollusk.web.val.run/?id={button_id}"
 
 def blink_led(times):
     for _ in range(times):
