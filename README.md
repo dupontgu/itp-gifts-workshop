@@ -16,7 +16,7 @@
 #### LOLIN S2 Mini
 An [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) WiFi development board
 
-<img width="400" src=".docs/s2mini.jpeg">
+<img width="550" src=".docs/s2mini.jpeg">
 
 Available on [Amazon](https://www.amazon.com/s?k=s2+mini)
 and (even cheaper) on [AliExpress](https://www.aliexpress.us/w/wholesale-s2-mini.html?spm=a2g0o.home.search.0).
@@ -35,27 +35,27 @@ and (even cheaper) on [AliExpress](https://www.aliexpress.us/w/wholesale-s2-mini
 
 ## Installing CircuitPython
 1. **In Google Chrome** (other browsers don't work yet), navigate to the [CircuitPython installer page for for LOLIN S2 Mini](https://circuitpython.org/board/lolin_s2_mini/)
-<img width="400" src=".docs/s2mini_cpy_landing.png">
+<img width="550" src=".docs/s2mini_cpy_landing.png">
 
 2. Plug your S2 Mini into your computer using its USB-C port.
 2. After it is plugged in, **hold the boot button (`0`) and -while holding- press and release the reset button (`RST`).** Release the boot button.
 2. On the CircuitPython web page, click the `Open Installer` button.
-<img width="400" src=".docs/s2mini_cpy_openInstall.png">
+<img width="550" src=".docs/s2mini_cpy_openInstall.png">
 
 5. Click `Full CircuitPython 9.X.X Install`
 5. Click `Next` then `Connect`
-<img width="400" src=".docs/s2mini_cpy_connect.png">
+<img width="550" src=".docs/s2mini_cpy_connect.png">
 
 7. Select your ESP32-S2 device from Chrome's drop down menu and click `Connect`.
 7. When you are asked to "overwrite everything" on the device, click `Continue`.
 7. Installation will begin:
-<img width="400" src=".docs/s2mini_cpy_erase.png">
-<img width="400" src=".docs/s2mini_cpy_flashing.png">
+<img width="550" src=".docs/s2mini_cpy_erase.png">
+<img width="550" src=".docs/s2mini_cpy_flashing.png">
 
 10. When flashing is done, hit the reset (`RST`) button.
 10. Click `Select S2MINIBOOT Drive`, and find the the drive named `S2MINIBOOT` that should now be mounted to your computer. **DO NOT SELECT ANY OTHER DRIVE - IF YOU ARE UNSURE, BAIL!**
 10. If prompted, allow the site to `Edit Files`
-<img width="400" src=".docs/s2mini_cpy_allowEdit.png">
+<img width="550" src=".docs/s2mini_cpy_allowEdit.png">
 
 
 
