@@ -57,6 +57,29 @@ and (even cheaper) on [AliExpress](https://www.aliexpress.us/w/wholesale-s2-mini
 10. If prompted, allow the site to `Edit Files`
 <img width="550" src=".docs/s2mini_cpy_allowEdit.png">
 
+13. Observe that the `S2MINIBOOT` drive has been unmounted, and a new drive named `CIRCUITPY` has appeared (may take a minute, hit the reset button if it doesn't show).
+13. **At this point, CircuitPython is installed and the rest of the Installer steps are optional. We're going to skip them for this workshop.**
 
+## Using CircuitPython
 
+### To update your CircuitPython application, all you need to do is modify the `code.py` file on the `CIRCUITPY` drive and save it. When saved, the app will restart and your new code will be executed.
+
+You can use any code editor to modify the files on `CIRCUITPY` but in this tutorial, we'll use the web editor since it does not require any installation and has a built in terminal so we can see our logs in real time.
+
+1. With your dev board still connected, avigate to [code.circuitpython.org](https://code.circuitpython.org/)
+1. Select `USB` (this is how the web page communicates with the dev board).
+<img width="550" src=".docs/s2mini_cpy_usb.png">
+
+3. Click `Connect to Device` and select your ESP32-S2 from Chrome's dropdown menu.
+3. Click `Select New Folder` and select the root directory of your `CIRCUITPY` drive. **DO NOT SELECT ANY OTHER DRIVE/FOLDER**
+<img width="550" src=".docs/s2mini_cpy_cpydrive.png">
+
+5. Click `Open` and select the file `code.py`. The file will open in the embedded editor.
+<img width="550" src=".docs/s2mini_cpy_hellowld.png">
+
+6. Click on the `Serial` tab at the bottom of the page, observe that a terminal opens on the right side of the page. this is where our logs will show up! Some text may already be there.
+6. Edit the print statement in `code.py` to say something else, like:
+```print("Hello ITP")```
+6. Click `Save`. Observe that the app restarts (the LED will flash a few times), and look for your updated log message in the terminal. **Congrats, you're a CircuitPython developer!**
+<img width="550" src=".docs/s2mini_cpy_logs.png">
 
