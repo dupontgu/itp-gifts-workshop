@@ -83,3 +83,27 @@ You can use any code editor to modify the files on `CIRCUITPY` but in this tutor
 6. Click `Save`. Observe that the app restarts (the LED will flash a few times), and look for your updated log message in the terminal. **Congrats, you're a CircuitPython developer!**
 <img width="550" src=".docs/s2mini_cpy_logs.png">
 
+## Loading CircuitPython Examples
+
+1. Download this repository from GitHub. You can use git if you're comfortable, but otherwise:
+    * Scroll to the top of this page.
+    * Click `Code`
+    * Select `Download Zip` (file will download)
+    * Extract contents of the zip file to your desktop/documents
+1. Copy all files (except for the `.docs` folder) to the root directory of your `CIRCUITPY` Drive. Overwrite all files/directories. 
+1. **RESET YOUR DEVICE by tapping the reset (`RST`) button**.
+1. Using your editor of choice (or [code.circuitpython.org](https://code.circuitpython.org/) as discussed in previous step), open up the updated `code.py` file. 
+<img width="550" src=".docs/s2mini_cpy_blinkytoggle.png">
+
+4. The "Blinky Toggle" example will be loaded by default. Use the boot button (`0`) to turn the LED on and off.
+5. If you want to view/edit the "Blinky Toggle" code, open the file: `examples/blinky_toggle/code.py` from your `CIRCUITPY` drive.
+
+6. Next let's try the "Web UI" example, which lets us control/view data from our device from a web page. In the _root_ level `code.py` file, comment out the ```import examples.blinky_toggle.code``` line, and _uncomment_ the ```# import examples.web_ui.code``` line.
+<img width="550" src=".docs/s2mini_cpy_webui.png">
+
+8. In your computer's file explorer, find the file `CIRCUITPY/examples/webui/webmidi.html` and open it in Chrome.
+8. Chrome will ask if you want to "Control ... MIDI devices" - click `Allow`.
+8. Use the on-screen slider and checkbox to toggle the status and adjust the brightness of the device's LED. You can also use the boot button (`0`) to toggle the LED on and off. The web page should update to reflect the new status.
+<img width="550" src=".docs/s2mini_cpy_webui_toggle.png">
+
+11. If you want to view/edit the "Web UI" code, open the file: `examples/web_ui/code.py` from your `CIRCUITPY` drive. You can also modifiy the `webmidi.html` file!

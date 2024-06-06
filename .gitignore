@@ -5,3 +5,4 @@
 boot_out.txt
 settings.toml
 sd/
+**/.DS_Store
