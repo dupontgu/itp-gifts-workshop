@@ -101,9 +101,37 @@ You can use any code editor to modify the files on `CIRCUITPY` but in this tutor
 6. Next let's try the "Web UI" example, which lets us control/view data from our device from a web page. In the _root_ level `code.py` file, comment out the ```import examples.blinky_toggle.code``` line, and _uncomment_ the ```# import examples.web_ui.code``` line.
 <img width="550" src=".docs/s2mini_cpy_webui.png">
 
-8. In your computer's file explorer, find the file `CIRCUITPY/examples/webui/webmidi.html` and open it in Chrome.
-8. Chrome will ask if you want to "Control ... MIDI devices" - click `Allow`.
-8. Use the on-screen slider and checkbox to toggle the status and adjust the brightness of the device's LED. You can also use the boot button (`0`) to toggle the LED on and off. The web page should update to reflect the new status.
+7. In your computer's file explorer, find the file `CIRCUITPY/examples/webui/webmidi.html` and open it in Chrome.
+7. Chrome will ask if you want to "Control ... MIDI devices" - click `Allow`.
+7. Use the on-screen slider and checkbox to toggle the status and adjust the brightness of the device's LED. You can also use the boot button (`0`) to toggle the LED on and off. The web page should update to reflect the new status. 
 <img width="550" src=".docs/s2mini_cpy_webui_toggle.png">
 
-11. If you want to view/edit the "Web UI" code, open the file: `examples/web_ui/code.py` from your `CIRCUITPY` drive. You can also modifiy the `webmidi.html` file!
+10. If you want to view/edit the "Web UI" code, open the file: `examples/web_ui/code.py` from your `CIRCUITPY` drive. You can also modifiy the `webmidi.html` file!
+
+## Using Val Town
+
+1. Navigate to [val.town](https://www.val.town/) and create an account or log into your existing one.
+1. From the `Home` page, click the option to `Create New (HTTP)` - this will create a "val" that you can access via a standard HTTPS call. It will be generated with a random name.
+1. Update the content of your val to the following, then hit `Save`:
+```js
+/** @jsxImportSource https://esm.sh/preact */
+import { render } from "npm:preact-render-to-string";
+
+export default async function (req: Request): Promise<Response> {
+  return new Response(render(<div>Here is my website!</div>), {
+    headers: {
+      "Content-Type": "text/html",
+    },
+  });
+}
+```
+<img width="550" src=".docs/s2mini_cpy_valweb.png">
+
+4. Open the URL for your val in your browser - **Congrats, you've just hosted a website on Val Town!**
+4. Check out the 3 vals I've created to help turn the S2 Mini hardware into an IOT button w/ dashboard:
+    * [The first](https://www.val.town/v/dupontgu/amberMollusk) accepts a button identifier and saves a "visit" record to my persistent storage on Val Town. This is what gets executed when the button on the S2 Mini is pressed.
+    * [The second](https://www.val.town/v/dupontgu/amaranthTern) renders a web page with a table showing all of the unique button identifiers that have logged visits, along with a count of those visits and the date of the most recent one.
+    * [The third](https://www.val.town/v/dupontgu/turquoiseAnt) is a script that that clears out all of the visit records.
+
+ ### Feel free to fork these vals into your own account, and check out the "Internet Button" example installed on your dev board to see how you can communicate with them directly from your hardware. 
+ You will need to update the [URL of the val](./examples/internet_button/code.py#L14) in the CircuitPython code, as well as the [WiFi credentials in the `credentials.csv` file](./examples/internet_button/credentials.csv#L2).
